@@ -103,6 +103,7 @@ if __name__ == '__main__':
     except FileNotFoundError:
         print(f"Error: File not found at {EXCEL_FILE}")
 
+
     print(f"\n--- Loading Location Notes from {TSV_FILE} ---")
     try:
         locations_df = load_location_notes(TSV_FILE)
