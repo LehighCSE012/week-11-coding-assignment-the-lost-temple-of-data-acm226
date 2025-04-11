@@ -114,8 +114,9 @@ if __name__ == '__main__':
             locations_df.info()
         else:
             print(f"Could not load data from {TSV_FILE}. Check file existence and format.")
-    except FileNotFoundError:
-        print(f"Error: File not found at {TSV_FILE}")
+    except Exception as e:
+        print(f"An unexpected error occurred loading {TSV_FILE}: {e}")
+
 
     print(f"\n--- Processing Journal from {JOURNAL_FILE} ---")
     try:
