@@ -58,7 +58,7 @@ def extract_journal_dates(journal_text):
     # Hint: Use re.findall with a raw string pattern for MM/DD/YYYY format.
     # Pattern idea: r"\d{2}/\d{2}/\d{4}"
     # Replace 'pass' with your code
-    pattern = r"(?:0[1-9]|1[0-2])/(?:0[1-9]|[12]\d|3[01])/\d{4}"
+    pattern = r"\d{2}/\d{2}/\d{4}"
     dates = re.findall(pattern, journal_text)
     return dates
     # return the list of found dates
@@ -85,13 +85,13 @@ def extract_secret_codes(journal_text):
 # --- Optional: Main execution block for your own testing ---
 if __name__ == '__main__':
      # Define file paths (ASSUME these files exist in the same directory)
-    EXCEL_FILE = 'artifacts.xlsx'
-    TSV_FILE = 'locations.tsv'
-    JOURNAL_FILE = 'journal.txt'
+    excel_file = 'artifacts.xlsx'
+    tsv_file = 'locations.tsv'
+    journal_file = 'journal.txt'
 
-    print(f"--- Loading Artifact Data from {EXCEL_FILE} ---")
+    print(f"--- Loading Artifact Data from {excel_file} ---")
     try:
-        artifacts_df = load_artifact_data(EXCEL_FILE)
+        artifacts_df = load_artifact_data(excel_file)
         if not artifacts_df.empty:
             print("Successfully loaded DataFrame. First 5 rows:")
             print(artifacts_df.head())
@@ -99,29 +99,29 @@ if __name__ == '__main__':
             artifacts_df.info()
         else:
              # Function might have printed its own error, or returned empty
-             print(f"Could not load data from {EXCEL_FILE}. Check file existence and format.")
+             print(f"Could not load data from {excel_file}. Check file existence and format.")
     except Exception as e: # Catch any unexpected error during the call
-        print(f"An unexpected error occurred loading {EXCEL_FILE}: {e}")
+        print(f"An unexpected error occurred loading {excel_file}: {e}")
 
 
-    print(f"\n--- Loading Location Notes from {TSV_FILE} ---")
+    print(f"\n--- Loading Location Notes from {tsv_file} ---")
     try:
-        locations_df = load_location_notes(TSV_FILE)
+        locations_df = load_location_notes(tsv_file)
         if not locations_df.empty:
             print("Successfully loaded DataFrame. First 5 rows:")
             print(locations_df.head())
             print("\nDataFrame Info:")
             locations_df.info()
         else:
-            print(f"Could not load data from {TSV_FILE}. Check file existence and format.")
+            print(f"Could not load data from {tsv_file}. Check file existence and format.")
     except Exception as e:
-        print(f"An unexpected error occurred loading {TSV_FILE}: {e}")
+        print(f"An unexpected error occurred loading {tsv_file}: {e}")
 
 
-    print(f"\n--- Processing Journal from {JOURNAL_FILE} ---")
+    print(f"\n--- Processing Journal from {journal_file} ---")
     try:
         # Reading the file content still requires handling potential FileNotFoundError
-        with open(JOURNAL_FILE, 'r', encoding='utf-8') as f:
+        with open(journal_file, 'r', encoding='utf-8') as f:
             journal_content = f.read()
 
         print("\nExtracting Dates...")
@@ -129,11 +129,11 @@ if __name__ == '__main__':
         print(f"Found dates: {extracted_dates}")
 
         print("\nExtracting Secret Codes...")
-        extracted_codes = extract_secret_codes(journal_content)
+        extracted_datescodes = extract_secret_codes(journal_content)
         print(f"Found codes: {extracted_codes}")
 
     except FileNotFoundError:
         # This handles the case where the journal file itself is missing
-        print(f"Error: File not found at {JOURNAL_FILE}")
+        print(f"Error: File not found at {journal_file}")
     except Exception as e:
         print(f"An error occurred processing the journal: {e}")
