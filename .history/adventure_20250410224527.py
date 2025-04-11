@@ -98,8 +98,8 @@ if __name__ == '__main__':
             print("\nDataFrame Info:")
             artifacts_df.info()
         else:
-            # Function might have printed its own error, or returned empty
-            print(f"Could not load data from {EXCEL_FILE}. Check file existence and format.")
+             # Function might have printed its own error, or returned empty
+             print(f"Could not load data from {EXCEL_FILE}. Check file existence and format.")
     except Exception as e: # Catch any unexpected error during the call
         print(f"An unexpected error occurred loading {EXCEL_FILE}: {e}")
 
