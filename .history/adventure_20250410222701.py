@@ -84,7 +84,7 @@ def extract_secret_codes(journal_text):
 
 # --- Optional: Main execution block for your own testing ---
 if __name__ == '__main__':
-     # Define file paths (ASSUME these files exist in the same directory)
+    # Define file paths (ASSUME these files exist in the same directory)
     excel_file = 'artifacts.xlsx'
     tsv_file = 'locations.tsv'
     journal_file = 'journal.txt'
@@ -100,9 +100,6 @@ if __name__ == '__main__':
         else:
              # Function might have printed its own error, or returned empty
              print(f"Could not load data from {excel_file}. Check file existence and format.")
-    except Exception as e: # Catch any unexpected error during the call
-        print(f"An unexpected error occurred loading {excel_file}: {e}")
-
 
     print(f"\n--- Loading Location Notes from {tsv_file} ---")
     try:
@@ -114,9 +111,6 @@ if __name__ == '__main__':
             locations_df.info()
         else:
             print(f"Could not load data from {tsv_file}. Check file existence and format.")
-    except Exception as e:
-        print(f"An unexpected error occurred loading {tsv_file}: {e}")
-
 
     print(f"\n--- Processing Journal from {journal_file} ---")
     try:
@@ -135,5 +129,3 @@ if __name__ == '__main__':
     except FileNotFoundError:
         # This handles the case where the journal file itself is missing
         print(f"Error: File not found at {journal_file}")
-    except Exception as e:
-        print(f"An error occurred processing the journal: {e}")
